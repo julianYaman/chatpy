@@ -13,6 +13,19 @@
     display: none;
 }
 
+/* chat connection status */
+.connected{
+    background: greenyellow;
+    font-weight: bold;
+    padding: 5px;
+}
+.disconnected{
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+}
+
 /* read below */
 .justAHeadline{
     text-align: center;
@@ -71,6 +84,14 @@
 }
 #chatForm div{
     width: 100%;
+}
+#chatInput{
+    outline: none;
+}
+/* when field is required */
+#chatInput:required{
+    outline: none;
+    border-bottom: 1px solid red;
 }
 
 /* clearfix */

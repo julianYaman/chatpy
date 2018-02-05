@@ -39,6 +39,9 @@
       <main class="mdl-layout__content">
         <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--4">
+                  <div class="connectionInformation">
+                      Loading...
+                  </div>
                   <div class="chatInformationContainer">
                       <h3 class="chatInfo_room">Room: </h3>
                       <h3 class="chatInfo_username">Username: </h3>
@@ -58,7 +61,7 @@
                                   <label class="mdl-textfield__label" for="roomField">Room</label>
                                   <span class="mdl-textfield__error">Input is not a number!</span>
                               </div>
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
+                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored joinRoomButton" type="submit">
                                   Join Room
                               </button>
                             </form>
@@ -68,10 +71,10 @@
                               <ul id="messages">
                               </ul>
                           </div>
-                          <form method="post" id="chatForm">
+                          <form action="chatMessage" method="post" id="chatForm">
                               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                  <input required class="mdl-textfield__input" type="text" id="chatInput">
-                                  <label class="mdl-textfield__label" for="chatInput">Your message</label>
+                                <input required class="mdl-textfield__input" type="text" id="chatInput">
+                                <label class="mdl-textfield__label" for="chatInput">Text...</label>
                               </div>
                           </form>
                           <div class="clearfix"></div>

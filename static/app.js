@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(loginForm.addEventListener){
         loginForm.addEventListener("submit", function (event) {
-            log("Submit event triggered.");
             event.preventDefault();
 
             var username = document.getElementById("usernameField").value;
             var room = document.getElementById("roomField").value;
 
-            log("Sent value: ");
             log({username: username, room: room});
 
             socket.emit("client_message", {data: 'I have some data for you! ' + username + " want to join room " + room});
@@ -48,9 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             var messageContent = document.getElementById("chatInput").value;
-            document.getElementById("chatInput").value = "";
 
-            socket.emit("sendChat_message", {message: messageContent})
+            if(messageContent.trim().length === 0){
+                return null;
+            }else {
+                document.getElementById("chatInput").value = '';
+                socket.emit("sendChat_message", {message: messageContent})
+            }
         })
     }
 
@@ -74,7 +76,63 @@ document.addEventListener("DOMContentLoaded", function () {
     socket.on('disconnect', function () {
         // socket.id.replace("/handler#","");
         socket.emit("leave")
-    })
+    });
+
+    /*
+    With this connection check function, we check if we are still connected to the server every 1 second..
+    */
+    // Check connection for the first time
+    if(socket.connected === true){
+        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='connected'>Connected</span>";
+
+        // Enabling all buttons and other action-able things for showing
+        // that the connection is alive. :)
+
+        // "Join Room" - Button
+        document.getElementsByClassName("joinRoomButton")[0].disabled = false;
+
+        // "Message content" - Input field
+        document.getElementById("chatInput").disabled = false;
+    }else{
+        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
+
+        // Disabling all buttons and other action-able things for showing
+        // that the connection is dead. :(
+
+        // "Join Room" - Button
+        document.getElementsByClassName("joinRoomButton")[0].disabled = true;
+
+        // "Message content" - Input field
+        document.getElementById("chatInput").disabled = true;
+    }
+
+    // Now checking connection every sec
+    setInterval(function () {
+        if(socket.connected === true){
+            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='connected'>Connected</span>";
+
+            // Enabling all buttons and other action-able things for showing
+            // that the connection is alive. :)
+
+            // "Join Room" - Button
+            document.getElementsByClassName("joinRoomButton")[0].disabled = false;
+
+            // "Message content" - Input field
+            document.getElementById("chatInput").disabled = false;
+        }else{
+            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
+
+            // Disabling all buttons and other action-able things for showing
+            // that the connection is dead. :(
+
+            // "Join Room" - Button
+            document.getElementsByClassName("joinRoomButton")[0].disabled = true;
+
+            // "Message content" - Input field
+            document.getElementById("chatInput").disabled = true;
+        }
+    }, 1000);
+
 
 });
 

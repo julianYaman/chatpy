@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementsByClassName("chatContainer")[0].style.display = 'block';
             document.getElementsByClassName("justAHeadline")[0].innerHTML = "<b>Chat ️💬</b>";
 
+            document.getElementsByClassName("chatInformationContainer")[0].style.display = 'block';
+            document.getElementsByClassName("chatInfo_room")[0].innerHTML = "Room: <b>" + room + "</b>";
+            document.getElementsByClassName("chatInfo_username")[0].innerHTML = "Username: <b>" + username + "</b>";
+
         });
     }
 
@@ -51,10 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     var list = document.getElementById("messages");
+    var messageContainer = document.getElementsByClassName("messageContainer")[0];
 
     socket.on('chat_information', function (message) {
         var entry = document.createElement('li');
         entry.appendChild(document.createTextNode(message));
+        entry.setAttribute("class", "chatInformationMessage");
         list.appendChild(entry);
     });
 
@@ -62,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var entry = document.createElement('li');
         entry.appendChild(document.createTextNode(message.username + ": " + message.content));
         list.appendChild(entry);
+        messageContainer.scrollBy(0,100);
     });
 
     socket.on('disconnect', function () {
@@ -101,5 +108,4 @@ function escapeHtml(unsafe) {
          .replace(/>/g, "&gt;")
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#039;");
- }
-
+}

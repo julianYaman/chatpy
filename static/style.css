@@ -1,3 +1,4 @@
+/* global page container */
 .pageContainer{
     position: absolute;
     border: 1px solid;
@@ -5,28 +6,61 @@
     height: 98%;
 }
 
+/* chat information */
+.chatInformationContainer{
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+/* read below */
+.justAHeadline{
+    text-align: center;
+}
+
+/* login container */
 .loginContainer{
     display: block;
     margin: 0 auto;
-}
-.justAHeadline{
-    text-align: center;
 }
 .loginContainer form div{
     margin: 0 auto;
     display: block;
 }
+.loginContainer form button{
+    display: block;
+    margin: 0 auto;
+}
 
+/* Chat page container */
 .chatContainer{
     display: none;
     position: absolute;
     width: 100%;
     height: 89%;
 }
+
+/* message content container */
 .messageContainer{
     height: 90%;
     overflow-y: scroll;
+    border-top: 3px solid rgba(0,0,0,.05);
+    border-bottom: 3px solid rgba(0,0,0,.05);
 }
+#messages{
+    list-style-type: none;
+}
+
+/* message types */
+/* message -> information */
+.chatInformationMessage{
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+
+/* chat input style */
 #chatForm{
   bottom: 0;
   left: 0;
@@ -38,6 +72,8 @@
 #chatForm div{
     width: 100%;
 }
+
+/* clearfix */
 .clearfix{
     clear: both;
 }

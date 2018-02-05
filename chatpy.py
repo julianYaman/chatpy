@@ -39,7 +39,7 @@ def test_connect():
     # Leaving the room
     leave_room(session['room'])
     print(Fore.RED + "Client " + request.sid + " with the username '" + session['username'] + "' is disconnected " +
-          "from the room" + session['room'])
+          "from the room " + session['room'])
 
     # Emitting the message to the room that the user is disconneted.
     emit('chat_information', session['username'] + ' disconnected.', room=session['room'])

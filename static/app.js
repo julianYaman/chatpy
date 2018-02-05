@@ -154,6 +154,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 1000);
 
+    // Functionality of the leave Room button
+    var leaveRoomButton = document.getElementsByClassName("leaveRoomButton")[0];
+    if(leaveRoomButton.addEventListener){
+        leaveRoomButton.addEventListener("click", function (event) {
+            socket.emit("leave");
+
+            // Showing Login form element
+            loginForm.style.display = 'block';
+
+            // Hiding Chat Container
+            document.getElementsByClassName("chatContainer")[0].style.display = 'none';
+
+            // Changing Headline
+            document.getElementsByClassName("justAHeadline")[0].innerHTML = "<b>Welcome 🙋‍♂️</b>";
+
+            // Displaying Chat Information container and "Leave Room" button
+            document.getElementsByClassName("chatInformationContainer")[0].style.display = 'none';
+            document.getElementsByClassName("chatLeaveRoomButtonContainer")[0].style.display = 'none';
+
+            // Displaying information about the room and chat
+            document.getElementsByClassName("chatInfo_room")[0].innerHTML = "";
+            document.getElementsByClassName("chatInfo_username")[0].innerHTML = "";
+
+            // Clearing chat
+            list.innerHTML = "";
+        });
+    }
 
 });
 

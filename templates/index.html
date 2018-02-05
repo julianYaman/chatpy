@@ -24,16 +24,16 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">GitHub Repository</a>
-            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" target="_blank" href="https://github.com/julianYaman/chatpy">GitHub Repository</a>
+            <a class="mdl-navigation__link" target="_blank" href="https://twitter.com/julianYaman">@julianYaman</a>
           </nav>
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">{{ title }}</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">GitHub Repository</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" target="_blank" href="https://github.com/julianYaman/chatpy">GitHub Repository</a>
+            <a class="mdl-navigation__link" target="_blank" href="https://twitter.com/julianYaman">@julianYaman</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -41,6 +41,11 @@
               <div class="mdl-cell mdl-cell--4">
                   <div class="connectionInformation">
                       Loading...
+                  </div>
+                  <div class="chatLeaveRoomButtonContainer">
+                    <button class="leaveRoomButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                      Leave Room
+                    </button>
                   </div>
                   <div class="chatInformationContainer">
                       <h3 class="chatInfo_room">Room: </h3>

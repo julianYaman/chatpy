@@ -28,11 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
             socket.emit("client_message", {data: 'I have some data for you! ' + username + " want to join room " + room});
             socket.emit("join", {username: username, room: room});
 
+            // Hiding Login form element
             loginForm.style.display = 'none';
+
+            // Showing Chat Container
             document.getElementsByClassName("chatContainer")[0].style.display = 'block';
+
+            // Changing Headline
             document.getElementsByClassName("justAHeadline")[0].innerHTML = "<b>Chat ️💬</b>";
 
+            // Displaying Chat Information container and "Leave Room" button
             document.getElementsByClassName("chatInformationContainer")[0].style.display = 'block';
+            document.getElementsByClassName("chatLeaveRoomButtonContainer")[0].style.display = 'block';
+
+            // Displaying information about the room and chat
             document.getElementsByClassName("chatInfo_room")[0].innerHTML = "Room: <b>" + room + "</b>";
             document.getElementsByClassName("chatInfo_username")[0].innerHTML = "Username: <b>" + username + "</b>";
 
@@ -50,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if(messageContent.trim().length === 0){
                 return null;
             }else {
-                document.getElementById("chatInput").value = '';
+                document.getElementById("chatInput").value = null;
                 socket.emit("sendChat_message", {message: messageContent})
             }
         })
@@ -93,6 +102,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // "Message content" - Input field
         document.getElementById("chatInput").disabled = false;
+
+        // "Leave Room" - Button
+        document.getElementsByClassName("leaveRoomButton")[0].disabled = false;
     }else{
         document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
 
@@ -104,6 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // "Message content" - Input field
         document.getElementById("chatInput").disabled = true;
+
+        // "Leave Room" - Button
+        document.getElementsByClassName("leaveRoomButton")[0].disabled = true;
     }
 
     // Now checking connection every sec
@@ -119,6 +134,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // "Message content" - Input field
             document.getElementById("chatInput").disabled = false;
+
+            // "Leave Room" - Button
+            document.getElementsByClassName("leaveRoomButton")[0].disabled = false;
         }else{
             document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
 
@@ -130,6 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // "Message content" - Input field
             document.getElementById("chatInput").disabled = true;
+
+            // "Leave Room" - Button
+            document.getElementsByClassName("leaveRoomButton")[0].disabled = true;
         }
     }, 1000);
 

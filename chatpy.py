@@ -9,10 +9,12 @@ socketio = SocketIO(app)
 
 init(autoreset=True)
 
+VERSION = "v0.0.1"
+
 
 @app.route('/')
 def home():
-    return render_template('index.html', title="Home")
+    return render_template('index.html', title="ChatPY " + VERSION)
 
 
 # Connect event

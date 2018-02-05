@@ -1,0 +1,43 @@
+.pageContainer{
+    position: absolute;
+    border: 1px solid;
+    width: calc(33.3333333333% - 24px);
+    height: 98%;
+}
+
+.loginContainer{
+    display: block;
+    margin: 0 auto;
+}
+.justAHeadline{
+    text-align: center;
+}
+.loginContainer form div{
+    margin: 0 auto;
+    display: block;
+}
+
+.chatContainer{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 89%;
+}
+.messageContainer{
+    height: 90%;
+    overflow-y: scroll;
+}
+#chatForm{
+  bottom: 0;
+  left: 0;
+  outline: none;
+  position: absolute;
+  right: 0;
+    width: 100%;
+}
+#chatForm div{
+    width: 100%;
+}
+.clearfix{
+    clear: both;
+}

@@ -182,6 +182,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Hiding loading overlay when site is finished with loading
+    document.getElementsByClassName("loadingOverlay")[0].style.display = "none";
+
 });
 
 // Adding a zero if the hour, minute or seconds number is below zero

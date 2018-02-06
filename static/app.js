@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             log({username: username, room: room});
 
-            socket.emit("client_message", {data: 'I have some data for you! ' + username + " want to join room " + room});
+            socket.emit("client_message", {data: 'I have some data for you! User ' + username + " wants to join room " + room + " !"});
             socket.emit("join", {username: username, room: room});
 
             // Hiding Login form element
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     */
     // Check connection for the first time
     if(socket.connected === true){
-        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='connected'>Connected</span>";
+        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<h2><span class=\"badge badge-success\">Connected</span></h2>";
 
         // Enabling all buttons and other action-able things for showing
         // that the connection is alive. :)
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // "Leave Room" - Button
         document.getElementsByClassName("leaveRoomButton")[0].disabled = false;
     }else{
-        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
+        document.getElementsByClassName("connectionInformation")[0].innerHTML = "<h2><span class=\"badge badge-danger\">Disconnected</span></h2>";
 
         // Disabling all buttons and other action-able things for showing
         // that the connection is dead. :(
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Now checking connection every sec
     setInterval(function () {
         if(socket.connected === true){
-            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='connected'>Connected</span>";
+            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<h2><span class=\"badge badge-success\">Connected</span></h2>";
 
             // Enabling all buttons and other action-able things for showing
             // that the connection is alive. :)
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // "Leave Room" - Button
             document.getElementsByClassName("leaveRoomButton")[0].disabled = false;
         }else{
-            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<span class='disconnected'>Disconnected</span>";
+            document.getElementsByClassName("connectionInformation")[0].innerHTML = "<h2><span class=\"badge badge-danger\">Disconnected</span></h2>";
 
             // Disabling all buttons and other action-able things for showing
             // that the connection is dead. :(

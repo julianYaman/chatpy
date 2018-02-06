@@ -12,9 +12,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 </head>
 <body>
+    <div class="loadingOverlay">
+
+    </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -38,9 +45,9 @@
       </div>
       <main class="mdl-layout__content">
         <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--4">
+              <div class="mdl-cell mdl-cell--3">
                   <div class="connectionInformation">
-                      Loading...
+                      <h2><span class="badge badge-warning">Loading...</span></h2>
                   </div>
                   <div class="chatLeaveRoomButtonContainer">
                     <button class="leaveRoomButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -52,10 +59,10 @@
                       <h3 class="chatInfo_username">Username: </h3>
                   </div>
               </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+              <div class="mdl-cell mdl-cell--6 mdl-cell--12-col-phone">
                   <div class="pageContainer">
                       <div class="loginContainer">
-                          <h2 class="justAHeadline"><b>Welcome 🙋‍♂️</b></h2>
+                          <h1 class="justAHeadline"><b>Welcome 🙋‍♂️</b></h1>
                           <form action="chat.html" method="post" id="loginForm">
                               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                   <input required class="mdl-textfield__input" type="text" id="usernameField">
@@ -86,7 +93,7 @@
                       </div>
                   </div>
               </div>
-              <div class="mdl-cell mdl-cell--4"></div>
+              <div class="mdl-cell mdl-cell--3"></div>
         </div>
       </main>
     </div>

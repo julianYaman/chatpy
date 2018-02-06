@@ -182,6 +182,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Functionality of the "Close" button in the first visit dialog
+    var firstVisitDialogContainer = document.getElementsByClassName("firstVisitOverlay")[0];
+    var closeFirstVisitDialogButton = document.getElementsByClassName("closeFirstVisitDialog")[0];
+    if(closeFirstVisitDialogButton.addEventListener){
+        closeFirstVisitDialogButton.addEventListener("click", function (event) {
+            firstVisitDialogContainer.style.display = 'none';
+        })
+    }
+
     // Hiding loading overlay when site is finished with loading
     document.getElementsByClassName("loadingOverlay")[0].style.display = "none";
 

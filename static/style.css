@@ -14,6 +14,23 @@
     height: 100%;
 }
 
+/* first visit overlay */
+.firstVisitOverlay{
+    position: absolute;
+    z-index: 500;
+    background: rgba(0,0,0,.4);
+    width: 100%;
+    height: 100%;
+}
+.firstVisitOverlay div.firstVisitCard{
+    margin: 0 auto;
+    top: 33%;
+}
+
+.firstVisitOverlay div.firstVisitCard a{
+    text-decoration: none;
+}
+
 .loadingOverlay div{
     margin: 0 auto;
     display: block;

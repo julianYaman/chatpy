@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-    <img src="https://github.com/julianYaman/chatpy/_github_assets/EvkYtND.png" />
+    <img src="https://github.com/julianYaman/chatpy/blob/master/_github_assets/EvkYtND.png"/>
 </p>
 
 ## Introduction

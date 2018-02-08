@@ -1,6 +1,27 @@
+/**
+ * @fileOverview Script with all functions for using the application
+ */
 var log = console.log;
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    // Setting up the application if it is the first time it was opened.
+    if(localStorage.getItem("darkMode") === null){
+        localStorage.setItem("darkMode", "false")
+    }
+
+    // Setting up application with the values given by the application first start or by the user by changing
+    // the values in the settings window.
+    if(localStorage.getItem("darkMode") === "true"){
+        $("body").addClass("darkMode");
+    }else{
+        $("body").removeClass("darkMode");
+    }
+
+
+
+
+    // Establishing Socket Connection
 
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + '/handler');
 
@@ -59,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if(messageContent.trim().length === 0){
                 return null;
             }else {
-                document.getElementById("chatInput").value = null;
+                $("#chatInput").val("");
                 socket.emit("sendChat_message", {message: messageContent})
             }
         })
@@ -193,6 +214,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hiding loading overlay when site is finished with loading
     document.getElementsByClassName("loadingOverlay")[0].style.display = "none";
+
+    $(".darkModeSwitch").click(function () {
+        localStorage.setItem("darkMode", "" + this.checked + "");
+        if(this.checked === true){
+            $("body").addClass("darkMode");
+        }else{
+            $("body").removeClass("darkMode");
+        }
+    });
 
 });
 

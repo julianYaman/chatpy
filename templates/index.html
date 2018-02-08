@@ -23,6 +23,27 @@
         <!-- MDL Spinner Component -->
         <div class="mdl-spinner mdl-js-spinner is-active"></div>
     </div>
+    <div class="modal settingsModal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+              <input type="checkbox" id="switch-1" class="darkModeSwitch mdl-switch__input">
+              <span class="mdl-switch__label"> Dark Mode</span>
+            </label>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="firstVisitOverlay">
         <div class="firstVisitCard demo-card-square mdl-card mdl-shadow--2dp">
           <div class="mdl-card__title mdl-card--expand">
@@ -63,8 +84,9 @@
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--3">
+        <div class="container-fluid" style="margin: 1% 0 0 0;">
+            <div class="row">
+              <div class="col">
                   <div class="connectionInformation">
                       <h2><span class="badge badge-warning">Loading...</span></h2>
                   </div>
@@ -78,7 +100,7 @@
                       <h3 class="chatInfo_username">Username: </h3>
                   </div>
               </div>
-              <div class="mdl-cell mdl-cell--6 mdl-cell--12-col-phone">
+              <div class="col">
                   <div class="pageContainer">
                       <div class="loginContainer">
                           <h1 class="justAHeadline"><b>Welcome 🙋‍♂️</b></h1>
@@ -102,17 +124,17 @@
                               <ul id="messages">
                               </ul>
                           </div>
-                          <form action="chatMessage" method="post" id="chatForm">
-                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input required class="mdl-textfield__input" type="text" id="chatInput">
-                                <label class="mdl-textfield__label" for="chatInput">Text...</label>
-                              </div>
+                          <form method="post" id="chatForm">
+                              <input autocomplete="" type="text" id="chatInput">
                           </form>
                           <div class="clearfix"></div>
                       </div>
                   </div>
               </div>
-              <div class="mdl-cell mdl-cell--3"></div>
+              <div class="col">
+                  <button class="settingsButton" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i></button>
+              </div>
+            </div>
         </div>
       </main>
     </div>

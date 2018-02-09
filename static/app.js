@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementsByClassName("chatInfo_room")[0].innerHTML = "Room: <b>" + room + "</b>";
             document.getElementsByClassName("chatInfo_username")[0].innerHTML = "Username: <b>" + username + "</b>";
 
+            log(socket);
+
         });
     }
 
@@ -222,6 +224,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }else{
             $("body").removeClass("darkMode");
         }
+    });
+
+    $(window).keydown(function (event) {
+
+        if(!(event.ctrlKey || event.metaKey || event.altKey)){
+            $("#chatInput").focus();
+        }
+
     });
 
 });

@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Setting up the application if it is the first time it was opened.
     if(localStorage.getItem("darkMode") === null){
-        localStorage.setItem("darkMode", "false")
+        localStorage.setItem("darkMode", "true")
     }
 
     // Setting up application with the values given by the application first start or by the user by changing
     // the values in the settings window.
     if(localStorage.getItem("darkMode") === "true"){
         $("body").addClass("darkMode");
+        $(".darkModeSwitch").prop("checked", true);
     }else{
         $("body").removeClass("darkMode");
+        $(".darkModeSwitch").prop("checked", false);
     }
-
-
 
 
     // Establishing Socket Connection
@@ -106,8 +106,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     socket.on('disconnect', function () {
-        // socket.id.replace("/handler#","");
-        socket.emit("leave")
+        log("You are disconnected");
+
+        socket.emit("leave");
+
+        // Showing Login form element
+        loginForm.style.display = 'block';
+
+        // Hiding Chat Container
+        document.getElementsByClassName("chatContainer")[0].style.display = 'none';
+
+        // Changing Headline
+        document.getElementsByClassName("justAHeadline")[0].innerHTML = "<b>Welcome 🙋‍♂️</b>";
+
+        // Displaying Chat Information container and "Leave Room" button
+        document.getElementsByClassName("chatInformationContainer")[0].style.display = 'none';
+        document.getElementsByClassName("chatLeaveRoomButtonContainer")[0].style.display = 'none';
+
+        // Displaying information about the room and chat
+        document.getElementsByClassName("chatInfo_room")[0].innerHTML = "";
+        document.getElementsByClassName("chatInfo_username")[0].innerHTML = "";
+
+        // Clearing chat
+        list.innerHTML = "";
     });
 
     /*
@@ -226,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // When a key was pressed, focus automatically the chat input field
     $(window).keydown(function (event) {
 
         if(!(event.ctrlKey || event.metaKey || event.altKey)){
